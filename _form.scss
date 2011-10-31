@@ -1,0 +1,225 @@
+/*TODO: code cleanup*/
+
+/* ------------------------------------------------------------------------------
+   
+   UNI-FORM BLUE by DRAGAN BABIC                            (v2) | Wed, 31 Mar 10
+   
+   ------------------------------------------------------------------------------
+   
+   Copyright (c) 2010, Dragan Babic
+   
+   Permission is hereby granted, free of charge, to any person
+   obtaining a copy of this software and associated documentation
+   files (the "Software"), to deal in the Software without
+   restriction, including without limitation the rights to use,
+   copy, modify, merge, publish, distribute, sublicense, and/or sell
+   copies of the Software, and to permit persons to whom the
+   Software is furnished to do so, subject to the following
+   conditions:
+   
+   The above copyright notice and this permission notice shall be
+   included in all copies or substantial portions of the Software.
+   
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+   OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+   NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+   HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+   WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+   FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+   OTHER DEALINGS IN THE SOFTWARE.
+   
+   ------------------------------------------------------------------------------ */
+
+.uniForm{ 
+    /*background: #dde8ec;*/ 
+    legend{
+        font-weight: bold;
+        margin: 0;
+        padding: 1.5em 0; 
+    }
+    .ctrlHolder{
+        padding: 1em;
+        border-bottom: 1px solid #c4ced1;
+    
+    .ctrlHolder > label:first-child{
+        @include rhythm-margin(0, 0, xs, 0);
+        @include adjust-font-size-to(rhythm-font(s));
+        line-height: $m;
+    }
+        .focused{
+            background: #e1f0f6;
+        }
+    }
+    .buttonHolder{
+        /*background: #c4ced1;*/
+        text-align: right;
+        margin: 1.5em 0 0 0;
+        padding: 1.5em;
+        /* CSS3 */
+        @include border-radius($border-radius-size);
+        
+        .primaryAction{
+            padding: 10px 22px;
+            background: #254a86;
+            border: 1px solid #163362;
+            font-weight: bold;
+            color: #fff;
+            @include box-shadow($box-shadow-color, $box-shadow-horizontal-offset, $box-shadow-vertical-offset, $box-shadow-blur);
+            @include border-radius($border-radius-size);
+        }
+        .primaryAction:active{
+            position: relative;
+            top: 1px;
+        }
+    }
+    .secondaryAction{
+        text-align: left;
+    }
+    button.secondaryAction{
+        background: transparent;
+        border: none; color: #777;
+        margin: 1.25em 0 0 0;
+        padding: 0;
+    }
+    .inlineLabels{
+        label em,
+        .label em{
+            font-style: normal;
+            font-weight: bold;
+        }
+    }
+    label small{ 
+        color: #777;
+    }
+    .textInput,
+    textarea{
+        padding: 4px 2px; 
+        border: 1px solid #b2babe;
+        background: #fff;
+        @include border-radius($border-radius-size);
+    }
+    textarea{
+        height: 12em;
+    }
+    .ctrlHolder{
+        ul li label{
+        }
+        /* Get rid of the 'glow' effect in WebKit, optional */
+        .textInput:focus,
+        textarea:focus{
+            outline: none;
+        }
+    }
+    .ctrlHolder.focused{
+        .formHint{ 
+            color: #333;
+        }
+    }
+    .formHint{
+        color: #777;
+    }
+    .inlineLabels{
+        .formHint{
+            padding-top: .5em;
+        }
+    }
+
+    /* ----------------------------------------------------------------------------- */
+    /* ############################### Messages #################################### */
+    /* ----------------------------------------------------------------------------- */
+
+    /* Error message at the top of the form */
+     #errorMsg{
+        background: #c20f2e;
+        color: #fff;
+        margin: 0 0 1.5em 0;
+        padding: 1px 1.5em;
+        @include box-shadow($box-shadow-color, $box-shadow-horizontal-offset, $box-shadow-vertical-offset, $box-shadow-blur);
+        @include border-radius($border-radius-size);
+        ol{
+            margin: 0 0 1.5em 0;
+            padding: 0;
+            li{
+                margin: 0 0 3px 1.5em;
+                padding: 7px;
+                background: #a20d27;
+                position: relative;
+                @include border-radius($border-radius-size);
+            }
+        }
+    }
+    .ctrlHolder.error,
+    .ctrlHolder.focused.error{
+        color: #c20f2e;
+        @include border-radius($border-radius-size);
+    }
+    .ctrlHolder.error input.error,
+    .ctrlHolder.error select.error,
+    .ctrlHolder.error textarea.error{
+        border-color: #c20f2e;
+    }
+    /* Success messages at the top of the form */
+     #okMsg{
+        background: #59a20e;
+        color: #343434;
+        margin: 0 0 1.5em 0;
+        padding: 1.5em;
+        text-align: center;
+        @include box-shadow($box-shadow-color, $box-shadow-horizontal-offset, $box-shadow-vertical-offset, $box-shadow-blur);
+        @include border-radius($border-radius-size);
+    }
+     #okMsg p{
+        margin: 0;
+    }
+    
+    /* ----------------------------------------------------------------------------- */
+    /* ############################### Columns ##################################### */
+    /* ----------------------------------------------------------------------------- */
+    
+    .col{
+        margin-bottom: 1.5em;
+    }
+    /* Use .first and .last classes to control the layout/spacing of your columns */
+    .col.first{
+        width: 49%;
+        float: left;
+        clear: none;
+    }
+    .col.last {
+        width: 49%;
+        float: right;
+        clear: none;
+        margin-right: 0;
+    }
+}
+
+#simplemodal-container{
+    .uniForm{
+        fieldset,
+        .ctrlHolder,
+        .buttonHolder{ 
+            margin: 0; 
+            padding: 0;
+            clear: both;
+            background: none;
+            border: none;
+            
+            label{
+                margin: 0;
+                @include adjust-font-size-to(rhythm-font(s));
+                line-height: $m;
+            }
+            #div_id_role label,
+            #id_agree_to_terms{
+                float: left;
+            }
+        }
+        .ctrlHolder{
+            @include rhythm-margin(0, 0, xs, 0);
+        }
+        .buttonHolder{
+            text-align: left;
+        }
+    }
+}
